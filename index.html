@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Digestão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0c9;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .digest-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            border-left: 2px solid #000;
+            border-right: 2px solid #000;
+            position: relative;
+            background-color: #ffdd99;
+        }
+
+        .digest-section:first-child {
+            border-left: none;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .food {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ff6347;
+            margin: 10px;
+        }
+
+        .no-chew .food {
+            width: 90px; /* Tamanho ajustado para 90% do padrão */
+            height: 90px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animações de digestão */
+        .digest .food {
+            animation: digestion 10s forwards;
+        }
+
+        .chewed.digest .food {
+            animation: digestion-chewed 6s forwards;
+        }
+
+        /* Digestão para alimento não mastigado (demora mais) */
+        @keyframes digestion {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.3);
+            }
+        }
+
+        /* Digestão mais rápida para alimentos mastigados */
+        @keyframes digestion-chewed {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.1);
+            }
+        }
+
+        /* Efeito de simulação do estômago */
+        .digest-section::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            top: 10%;
+            left: 0;
+            background: radial-gradient(circle, rgba(255,230,150,0.5) 20%, rgba(255,0,0,0.1) 80%);
+            z-index: -1;
+        }
+
+        /* Velocidades diferentes para alimentos mastigados */
+        .chewed .food:nth-child(1) {
+            animation-duration: 3s;
+        }
+
+        .chewed .food:nth-child(2) {
+            animation-duration: 4s;
+        }
+
+        .chewed .food:nth-child(3) {
+            animation-duration: 5s;
+        }
+
+        /* Bolhas para simular ambiente gástrico */
+        .bubble {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            animation: bubble-rise 4s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(odd) {
+            width: 20px;
+            height: 20px;
+            animation-duration: 5s;
+        }
+
+        .bubble:nth-child(2n) {
+            animation-duration: 6s;
+        }
+
+        @keyframes bubble-rise {
+            0% {
+                bottom: 0;
+                opacity: 0.8;
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Botões */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container de simulação -->
+    <div class="container">
+        <!-- Digestão sem mastigar -->
+        <div class="digest-section no-chew" id="section-no-chew">
+            <h2>Sem Mastigar</h2>
+            <div class="food"></div>
+        </div>
+
+        <!-- Digestão com mastigar -->
+        <div class="digest-section chewed" id="section-chew">
+            <h2>Mastigado</h2>
+            <div class="food"></div>
+            <div class="food"></div>
+            <div class="food"></div>
+        </div>
+    </div>
+
+    <!-- Bolhas -->
+    <div class="bubble" style="left: 20%;"></div>
+    <div class="bubble" style="left: 50%;"></div>
+    <div class="bubble" style="left: 80%;"></div>
+
+    <!-- Botões para controle -->
+    <div class="buttons">
+        <button onclick="startDigestion()">Iniciar Digestão</button>
+        <button onclick="resetSimulation()">Reiniciar</button>
+    </div>
+
+    <script>
+        function startDigestion() {
+            // Adiciona a classe 'digest' para iniciar a animação de digestão em ambas as seções
+            document.getElementById('section-no-chew').classList.add('digest');
+            document.getElementById('section-chew').classList.add('digest');
+        }
+
+        function resetSimulation() {
+            // Remove a classe 'digest' para parar a animação e voltar ao estado inicial
+            document.getElementById('section-no-chew').classList.remove('digest');
+            document.getElementById('section-chew').classList.remove('digest');
+
+            // Reinicia o tamanho dos alimentos
+            const foods = document.querySelectorAll('.food');
+            foods.forEach(food => {
+                food.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+
+</body>
+</html>
