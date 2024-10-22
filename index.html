@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0c9;
+            background-color: #ff9999;
             font-family: Arial, sans-serif;
         }
 
@@ -26,6 +26,7 @@
             width: 80%;
             justify-content: space-evenly;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .digest-section {
@@ -34,32 +35,46 @@
             align-items: center;
             justify-content: center;
             width: 50%;
-            border-left: 2px solid #000;
-            border-right: 2px solid #000;
+            background-color: #ff6666;
+            padding: 20px;
             position: relative;
-            background-color: #ffdd99;
-        }
-
-        .digest-section:first-child {
-            border-left: none;
+            z-index: 2; /* Para garantir que fique acima da borda ondulada */
         }
 
         h2 {
             margin-bottom: 20px;
+            color: #fff;
         }
 
-        .food {
-            position: relative;
-            width: 100px;
-            height: 100px;
+        /* Espaço para imagens */
+        .food img {
+            width: 200px;
+            height: 190px;
             border-radius: 50%;
-            background-color: #ff6347;
             margin: 10px;
+            position: relative; /* Para garantir que as imagens sejam posicionadas corretamente */
+            z-index: 3; /* Colocando as imagens acima da borda */
         }
 
-        .no-chew .food {
-            width: 90px; /* Tamanho ajustado para 90% do padrão */
-            height: 90px;
+      /* Espaço para imagens */
+.food img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 10px;
+    position: relative; /* Para garantir que as imagens sejam posicionadas corretamente */
+    z-index: 3; /* Colocando as imagens acima da borda */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave */
+    transition: transform 0.2s ease-in-out; /* Adiciona uma transição para a animação */
+}
+
+.food img:hover {
+    transform: scale(1.1); /* Amplia ligeiramente ao passar o mouse */
+}
+
+        .no-chew .food img {
+            width: 250px;
+            height: 250px;
         }
 
         .hidden {
@@ -67,15 +82,14 @@
         }
 
         /* Animações de digestão */
-        .digest .food {
+        .digest .food img {
             animation: digestion 10s forwards;
         }
 
-        .chewed.digest .food {
+        .chewed.digest .food img {
             animation: digestion-chewed 6s forwards;
         }
 
-        /* Digestão para alimento não mastigado (demora mais) */
         @keyframes digestion {
             0% {
                 transform: scale(1);
@@ -85,7 +99,6 @@
             }
         }
 
-        /* Digestão mais rápida para alimentos mastigados */
         @keyframes digestion-chewed {
             0% {
                 transform: scale(1);
@@ -96,27 +109,52 @@
         }
 
         /* Efeito de simulação do estômago */
-        .digest-section::after {
+        /*.digest-section::after {
             content: '';
             position: absolute;
             width: 100%;
             height: 80%;
             top: 10%;
             left: 0;
-            background: radial-gradient(circle, rgba(255,230,150,0.5) 20%, rgba(255,0,0,0.1) 80%);
+            background: radial-gradient(circle, rgba(255,165,0,0.5) 20%, rgba(255,69,0,0.1) 80%);
             z-index: -1;
+        }*/
+
+        /* Efeito de simulação do estômago */
+.digest-section::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 10%;
+    left: 0;
+    background: radial-gradient(circle, rgba(255,165,0,0.5) 20%, rgba(255,69,0,0.1) 80%);
+    z-index: -1;
+    /* Adiciona a borda ondulada rosa */
+    border-top: 10px solid #ff6666; /* Define a largura da borda */
+    border-radius: 100px 100px 0 0; /* Define o raio da borda ondulada */
+}
+
+        /* Adiciona o efeito ondulado ao quadrado maior */
+        .digest-section {
+            /* ... other styles */
+            border-top-left-radius: 100px;
+            border-top-right-radius: 100px;
+            border-bottom-left-radius: 100px;
+            border-bottom-right-radius: 100px;
         }
 
+     
         /* Velocidades diferentes para alimentos mastigados */
-        .chewed .food:nth-child(1) {
+        .chewed .food:nth-child(1) img {
             animation-duration: 3s;
         }
 
-        .chewed .food:nth-child(2) {
+        .chewed .food:nth-child(2) img {
             animation-duration: 4s;
         }
 
-        .chewed .food:nth-child(3) {
+        .chewed .food:nth-child(3) img {
             animation-duration: 5s;
         }
 
@@ -128,7 +166,7 @@
             height: 30px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
-            animation: bubble-rise 4s infinite ease-in-out;
+            animation: bubble-rise 2s infinite ease-in-out;
         }
 
         .bubble:nth-child(odd) {
@@ -152,6 +190,41 @@
             }
         }
 
+        /* Mais bolhas (aumento de 25%) */
+        /*.bubble:nth-child(1),
+        .bubble:nth-child(2),
+        .bubble:nth-child(3),
+        .bubble:nth-child(4),
+        .bubble:nth-child(5),
+        .bubble:nth-child(6) {
+            animation-duration: 3s;
+        }*/
+
+        .bubble:nth-child(1),
+        .bubble:nth-child(2),
+        .bubble:nth-child(3),
+        .bubble:nth-child(4),
+        .bubble:nth-child(5),
+        .bubble:nth-child(6),
+        .bubble:nth-child(7),
+        .bubble:nth-child(8),
+        .bubble:nth-child(9),
+        .bubble:nth-child(10),
+        .bubble:nth-child(11),
+        .bubble:nth-child(12),
+        .bubble:nth-child(13),
+        .bubble:nth-child(14),
+        .bubble:nth-child(15) {
+            animation-duration: 3s;
+        }
+
+        /* Aumenta o tamanho da imagem do "bagulho" em 30% */
+        #section-no-chew .food img {
+            width: 300px; /* 150 * 2 = 300px */
+            height: 300px; /* 190 * 2 = 380px */
+        }
+
+
         /* Botões */
         .buttons {
             margin-top: 20px;
@@ -160,7 +233,7 @@
         button {
             padding: 10px 20px;
             margin: 0 10px;
-            background-color: #ff6347;
+            background-color: #ff4500;
             color: white;
             border: none;
             border-radius: 5px;
@@ -168,7 +241,7 @@
         }
 
         button:hover {
-            background-color: #ff4500;
+            background-color: #e04000;
         }
     </style>
 </head>
@@ -179,22 +252,33 @@
         <!-- Digestão sem mastigar -->
         <div class="digest-section no-chew" id="section-no-chew">
             <h2>Sem Mastigar</h2>
-            <div class="food"></div>
+            <div class="food">
+                <img src="bagulho.png" alt="Sem Mastigar">
+            </div>
         </div>
+
+        <!-- Linha divisória -->
+        <div class="divider"></div>
 
         <!-- Digestão com mastigar -->
         <div class="digest-section chewed" id="section-chew">
             <h2>Mastigado</h2>
-            <div class="food"></div>
-            <div class="food"></div>
-            <div class="food"></div>
+            <div class="food">
+                <img src="Mastigadtrem.png" alt="Mastigado">
+            </div>
         </div>
     </div>
 
-    <!-- Bolhas -->
+    <!-- Bolhas (mais 25%) -->
+    <div class="bubble" style="left: 10%;"></div>
     <div class="bubble" style="left: 20%;"></div>
+    <div class="bubble" style="left: 30%;"></div>
+    <div class="bubble" style="left: 40%;"></div>
     <div class="bubble" style="left: 50%;"></div>
+    <div class="bubble" style="left: 60%;"></div>
+    <div class="bubble" style="left: 70%;"></div>
     <div class="bubble" style="left: 80%;"></div>
+    <div class="bubble" style="left: 90%;"></div>
 
     <!-- Botões para controle -->
     <div class="buttons">
@@ -215,7 +299,7 @@
             document.getElementById('section-chew').classList.remove('digest');
 
             // Reinicia o tamanho dos alimentos
-            const foods = document.querySelectorAll('.food');
+            const foods = document.querySelectorAll('.food img');
             foods.forEach(food => {
                 food.style.transform = 'scale(1)';
             });
