@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #ff9999;
+            background: linear-gradient(135deg, #ff9999 0%, #ff6666 100%);
             font-family: Arial, sans-serif;
         }
 
@@ -27,7 +27,7 @@
             justify-content: space-evenly;
             margin-bottom: 20px;
             position: relative;
-            flex-wrap: wrap; /* Permite ajuste para telas menores */
+            flex-wrap: wrap;
         }
 
         .digest-section {
@@ -128,11 +128,11 @@
 
         @media (max-width: 768px) {
             .digest-section {
-                width: 100%; /* O layout se ajusta em telas menores */
+                width: 100%;
             }
 
             .food img {
-                max-width: 200px; /* Ajusta o tamanho das imagens em telas pequenas */
+                max-width: 200px;
             }
         }
     </style>
@@ -157,6 +157,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Bolhas -->
     <div class="bubble" style="left: 10%;"></div>
