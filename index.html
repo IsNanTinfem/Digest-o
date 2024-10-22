@@ -23,10 +23,11 @@
 
         .container {
             display: flex;
-            width: 80%;
+            flex-wrap: wrap; /* Permite que os elementos se ajustem em telas menores */
             justify-content: space-evenly;
+            width: 100%;
+            max-width: 1200px;
             margin-bottom: 20px;
-            position: relative;
         }
 
         .digest-section {
@@ -34,11 +35,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50%;
+            width: 100%;
+            max-width: 400px; /* Define um limite máximo de largura */
             background-color: #ff6666;
             padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
             position: relative;
-            z-index: 2; /* Para garantir que fique acima da borda ondulada */
         }
 
         h2 {
@@ -46,70 +49,20 @@
             color: #fff;
         }
 
-        /* Espaço para imagens */
         .food img {
-            width: 200px;
-            height: 190px;
+            width: 100%;
+            max-width: 250px; /* Limita o tamanho máximo da imagem */
+            height: auto;
             border-radius: 50%;
-            margin: 10px;
-            position: relative; /* Para garantir que as imagens sejam posicionadas corretamente */
-            z-index: 3; /* Colocando as imagens acima da borda */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
         }
 
-      /* Espaço para imagens */
-.food img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    margin: 10px;
-    position: relative; /* Para garantir que as imagens sejam posicionadas corretamente */
-    z-index: 3; /* Colocando as imagens acima da borda */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave */
-    transition: transform 0.2s ease-in-out; /* Adiciona uma transição para a animação */
-}
-
-.food img:hover {
-    transform: scale(1.1); /* Amplia ligeiramente ao passar o mouse */
-}
-
-        .no-chew .food img {
-            width: 250px;
-            height: 250px;
+        .food img:hover {
+            transform: scale(1.1);
         }
 
-        .hidden {
-            display: none;
-        }
-
-        /* Animações de digestão */
-        .digest .food img {
-            animation: digestion 10s forwards;
-        }
-
-        .chewed.digest .food img {
-            animation: digestion-chewed 6s forwards;
-        }
-
-        @keyframes digestion {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(0.3);
-            }
-        }
-
-        @keyframes digestion-chewed {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(0.1);
-            }
-        }
-
-        /* Efeito de simulação do estômago */
-        /*.digest-section::after {
+        .digest-section::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -118,65 +71,23 @@
             left: 0;
             background: radial-gradient(circle, rgba(255,165,0,0.5) 20%, rgba(255,69,0,0.1) 80%);
             z-index: -1;
-        }*/
-
-        /* Efeito de simulação do estômago */
-.digest-section::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    top: 10%;
-    left: 0;
-    background: radial-gradient(circle, rgba(255,165,0,0.5) 20%, rgba(255,69,0,0.1) 80%);
-    z-index: -1;
-    /* Adiciona a borda ondulada rosa */
-    border-top: 10px solid #ff6666; /* Define a largura da borda */
-    border-radius: 100px 100px 0 0; /* Define o raio da borda ondulada */
-}
-
-        /* Adiciona o efeito ondulado ao quadrado maior */
-        .digest-section {
-            /* ... other styles */
-            border-top-left-radius: 100px;
-            border-top-right-radius: 100px;
-            border-bottom-left-radius: 100px;
-            border-bottom-right-radius: 100px;
-        }
-
-     
-        /* Velocidades diferentes para alimentos mastigados */
-        .chewed .food:nth-child(1) img {
-            animation-duration: 3s;
-        }
-
-        .chewed .food:nth-child(2) img {
-            animation-duration: 4s;
-        }
-
-        .chewed .food:nth-child(3) img {
-            animation-duration: 5s;
         }
 
         /* Bolhas para simular ambiente gástrico */
         .bubble {
             position: absolute;
             bottom: 0;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
-            animation: bubble-rise 2s infinite ease-in-out;
+            animation: bubble-rise 4s infinite ease-in-out;
         }
 
         .bubble:nth-child(odd) {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             animation-duration: 5s;
-        }
-
-        .bubble:nth-child(2n) {
-            animation-duration: 6s;
         }
 
         @keyframes bubble-rise {
@@ -189,41 +100,6 @@
                 opacity: 0;
             }
         }
-
-        /* Mais bolhas (aumento de 25%) */
-        /*.bubble:nth-child(1),
-        .bubble:nth-child(2),
-        .bubble:nth-child(3),
-        .bubble:nth-child(4),
-        .bubble:nth-child(5),
-        .bubble:nth-child(6) {
-            animation-duration: 3s;
-        }*/
-
-        .bubble:nth-child(1),
-        .bubble:nth-child(2),
-        .bubble:nth-child(3),
-        .bubble:nth-child(4),
-        .bubble:nth-child(5),
-        .bubble:nth-child(6),
-        .bubble:nth-child(7),
-        .bubble:nth-child(8),
-        .bubble:nth-child(9),
-        .bubble:nth-child(10),
-        .bubble:nth-child(11),
-        .bubble:nth-child(12),
-        .bubble:nth-child(13),
-        .bubble:nth-child(14),
-        .bubble:nth-child(15) {
-            animation-duration: 3s;
-        }
-
-        /* Aumenta o tamanho da imagem do "bagulho" em 30% */
-        #section-no-chew .food img {
-            width: 300px; /* 150 * 2 = 300px */
-            height: 300px; /* 190 * 2 = 380px */
-        }
-
 
         /* Botões */
         .buttons {
@@ -243,6 +119,22 @@
         button:hover {
             background-color: #e04000;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .digest-section {
+                width: 90%;
+                max-width: 300px; /* Ajusta o tamanho máximo das seções em telas pequenas */
+            }
+
+            .food img {
+                max-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -250,18 +142,15 @@
     <!-- Container de simulação -->
     <div class="container">
         <!-- Digestão sem mastigar -->
-        <div class="digest-section no-chew" id="section-no-chew">
+        <div class="digest-section" id="section-no-chew">
             <h2>Sem Mastigar</h2>
             <div class="food">
                 <img src="./bagulho.png" alt="Sem Mastigar">
             </div>
         </div>
 
-        <!-- Linha divisória -->
-        <div class="divider"></div>
-
         <!-- Digestão com mastigar -->
-        <div class="digest-section chewed" id="section-chew">
+        <div class="digest-section" id="section-chew">
             <h2>Mastigado</h2>
             <div class="food">
                 <img src="./Mastigadtrem.png" alt="Mastigado">
@@ -269,16 +158,11 @@
         </div>
     </div>
 
-    <!-- Bolhas (mais 25%) -->
+    <!-- Bolhas -->
     <div class="bubble" style="left: 10%;"></div>
     <div class="bubble" style="left: 20%;"></div>
     <div class="bubble" style="left: 30%;"></div>
     <div class="bubble" style="left: 40%;"></div>
-    <div class="bubble" style="left: 50%;"></div>
-    <div class="bubble" style="left: 60%;"></div>
-    <div class="bubble" style="left: 70%;"></div>
-    <div class="bubble" style="left: 80%;"></div>
-    <div class="bubble" style="left: 90%;"></div>
 
     <!-- Botões para controle -->
     <div class="buttons">
@@ -288,17 +172,14 @@
 
     <script>
         function startDigestion() {
-            // Adiciona a classe 'digest' para iniciar a animação de digestão em ambas as seções
             document.getElementById('section-no-chew').classList.add('digest');
             document.getElementById('section-chew').classList.add('digest');
         }
 
         function resetSimulation() {
-            // Remove a classe 'digest' para parar a animação e voltar ao estado inicial
             document.getElementById('section-no-chew').classList.remove('digest');
             document.getElementById('section-chew').classList.remove('digest');
 
-            // Reinicia o tamanho dos alimentos
             const foods = document.querySelectorAll('.food img');
             foods.forEach(food => {
                 food.style.transform = 'scale(1)';
