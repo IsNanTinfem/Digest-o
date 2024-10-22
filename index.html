@@ -47,6 +47,11 @@
             z-index: 2;
             border-radius: 20px; /* Arredonda as bordas das seções individuais */
             overflow: hidden; /* Garante que o conteúdo não saia das bordas */
+            transition: transform 0.5s ease; /* Transição para animação */
+        }
+
+        .digest {
+            transform: scale(1.05); /* Animação de digerir */
         }
 
         h2 {
@@ -184,14 +189,17 @@
 
     <script>
         function startDigestion() {
+            // Adiciona a classe 'digest' para iniciar a animação de digestão em ambas as seções
             document.getElementById('section-no-chew').classList.add('digest');
             document.getElementById('section-chew').classList.add('digest');
         }
 
         function resetSimulation() {
+            // Remove a classe 'digest' para parar a animação e voltar ao estado inicial
             document.getElementById('section-no-chew').classList.remove('digest');
             document.getElementById('section-chew').classList.remove('digest');
 
+            // Reinicia o tamanho dos alimentos
             const foods = document.querySelectorAll('.food img');
             foods.forEach(food => {
                 food.style.transform = 'scale(1)';
