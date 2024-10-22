@@ -35,17 +35,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 50%;
+            width: 45%; /* Ajustado para melhorar a responsividade */
             background-color: rgba(255, 102, 102, 0.7);
             padding: 20px;
             position: relative;
             z-index: 2;
             border-radius: 20px; /* Arredonda as bordas das seções */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
         }
 
         h2 {
             margin-bottom: 20px;
             color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra no texto */
         }
 
         .food img {
@@ -60,7 +62,7 @@
         }
 
         .food img:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Amplia ao passar o mouse */
         }
 
         .digest-section::after {
@@ -78,28 +80,28 @@
 
         /* Animações de digestão */
         .digest .food img {
-            animation: digestion 10s forwards; /* Define a animação */
+            animation: digestion 10s forwards;
         }
 
         .chewed.digest .food img {
-            animation: digestion-chewed 6s forwards; /* Define a animação para alimentos mastigados */
+            animation: digestion-chewed 6s forwards;
         }
 
         @keyframes digestion {
             0% {
-                transform: scale(1); /* Tamanho inicial */
+                transform: scale(1);
             }
             100% {
-                transform: scale(0.3); /* Tamanho final */
+                transform: scale(0.3);
             }
         }
 
         @keyframes digestion-chewed {
             0% {
-                transform: scale(1); /* Tamanho inicial */
+                transform: scale(1);
             }
             100% {
-                transform: scale(0.1); /* Tamanho final */
+                transform: scale(0.1);
             }
         }
 
@@ -136,16 +138,19 @@
 
         .buttons {
             margin-top: 20px;
+            display: flex; /* Para alinhar os botões */
+            gap: 10px; /* Espaçamento entre os botões */
         }
 
         button {
             padding: 10px 20px;
-            margin: 0 10px;
             background-color: #ff4500;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para os botões */
+            transition: background-color 0.3s; /* Transição suave para a cor do botão */
         }
 
         button:hover {
