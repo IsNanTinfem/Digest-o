@@ -23,11 +23,11 @@
 
         .container {
             display: flex;
-            flex-wrap: wrap; /* Permite que os elementos se ajustem em telas menores */
             justify-content: space-evenly;
             width: 100%;
             max-width: 1200px;
             margin-bottom: 20px;
+            flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
         }
 
         .digest-section {
@@ -35,7 +35,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 45%;
             max-width: 400px; /* Define um limite máximo de largura */
             background-color: #ff6666;
             padding: 20px;
@@ -51,7 +51,7 @@
 
         .food img {
             width: 100%;
-            max-width: 250px; /* Limita o tamanho máximo da imagem */
+            max-width: 300px;
             height: auto;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -90,6 +90,10 @@
             animation-duration: 5s;
         }
 
+        .bubble:nth-child(2n) {
+            animation-duration: 6s;
+        }
+
         @keyframes bubble-rise {
             0% {
                 bottom: 0;
@@ -121,18 +125,12 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .digest-section {
-                width: 90%;
-                max-width: 300px; /* Ajusta o tamanho máximo das seções em telas pequenas */
+                width: 90%; /* O layout ajusta-se em telas menores */
             }
 
             .food img {
-                max-width: 200px;
+                max-width: 200px; /* Ajusta o tamanho das imagens para caber em telas menores */
             }
         }
     </style>
@@ -163,6 +161,11 @@
     <div class="bubble" style="left: 20%;"></div>
     <div class="bubble" style="left: 30%;"></div>
     <div class="bubble" style="left: 40%;"></div>
+    <div class="bubble" style="left: 50%;"></div>
+    <div class="bubble" style="left: 60%;"></div>
+    <div class="bubble" style="left: 70%;"></div>
+    <div class="bubble" style="left: 80%;"></div>
+    <div class="bubble" style="left: 90%;"></div>
 
     <!-- Botões para controle -->
     <div class="buttons">
